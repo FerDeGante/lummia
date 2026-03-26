@@ -7,9 +7,10 @@ import { GlassPanel } from "@/components/ui/GlassPanel";
 
 type FinalCTAProps = {
   onOpenSpace: () => void;
+  onOpenUpdates: () => void;
 };
 
-export function FinalCTA({ onOpenSpace }: FinalCTAProps) {
+export function FinalCTA({ onOpenSpace, onOpenUpdates }: FinalCTAProps) {
   const prefersReducedMotion = useReducedMotion();
 
   return (
@@ -56,8 +57,8 @@ export function FinalCTA({ onOpenSpace }: FinalCTAProps) {
                   <Button size="lg" icon onClick={onOpenSpace}>
                     Solicitar espacio
                   </Button>
-                  <Button size="lg" variant="secondary" href="#marcas">
-                    Conocer marcas
+                  <Button size="lg" variant="secondary" onClick={onOpenUpdates}>
+                    Recibir novedades
                   </Button>
                 </div>
               </div>

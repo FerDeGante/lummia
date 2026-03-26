@@ -19,13 +19,13 @@ export function InstagramSection() {
               eyebrow="Instagram"
               title={
                 <>
-                  La conversación visual también vive en{" "}
+                  Síguenos en{" "}
                   <ActivatedAccent gradientClassName="from-[var(--copper)] via-[var(--gold)] to-[var(--olive)]">
                     Instagram
                   </ActivatedAccent>
                 </>
               }
-              text="Por ahora es una vitrina visual del perfil de Lúmmia para mostrar el tono, la curaduría y la energía de la apertura."
+              text="No te pierdas todas las novedades y sorpresas."
             />
 
             <Link

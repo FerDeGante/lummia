@@ -66,8 +66,12 @@ export function BrandShowcase() {
                       {formatIndex(activeIndex)} / {totalSlides}
                     </span>
                   </div>
-                  <div className="inline-flex rounded-full border border-[rgba(177,145,104,0.1)] bg-[rgba(255,255,255,0.94)] px-4 py-2.5 text-[0.76rem] font-semibold uppercase tracking-[0.24em] text-[var(--muted)] shadow-[inset_0_1px_0_rgba(255,255,255,0.94)]">
-                    Marca destacada
+                  <div className="inline-flex rounded-full border border-[rgba(177,145,104,0.1)] bg-[rgba(255,255,255,0.94)] px-4 py-2.5 text-[0.76rem] font-semibold uppercase tracking-[0.24em] shadow-[inset_0_1px_0_rgba(255,255,255,0.94)]">
+                    {brand.tag ? (
+                      <span className="text-[var(--gold)]">{brand.tag}</span>
+                    ) : (
+                      <span className="text-[var(--muted)]">Marca destacada</span>
+                    )}
                   </div>
                 </div>
 
@@ -114,7 +118,7 @@ export function BrandShowcase() {
                   <div className="flex h-full flex-col justify-between pb-1 pt-1 lg:pt-3">
                     <div>
                       <p className="text-[0.74rem] font-semibold uppercase tracking-[0.26em] text-[var(--gold)]">
-                        Marca destacada
+                        {brand.tag ?? "Marca destacada"}
                       </p>
                       <h3 className="mt-4 max-w-xl text-balance text-[clamp(2.6rem,4.8vw,5rem)] font-semibold leading-[0.95] tracking-[-0.06em] text-[var(--ink)]">
                         {brand.name}

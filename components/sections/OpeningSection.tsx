@@ -43,6 +43,9 @@ export function OpeningSection({ onOpenSpace, onOpenUpdates }: OpeningSectionPro
                   </ActivatedAccent>{" "}
                   y nuevas oportunidades para crecer.
                 </p>
+                <p className="relative mt-3 max-w-xl text-sm leading-6 tracking-[-0.01em] text-[var(--muted)]">
+                  Esa es la diferencia entre abrir y empezar a construir marca desde el día uno.
+                </p>
 
                 <div className="mt-8 flex flex-wrap gap-3">
                   {OPENING_CHIPS.map((chip, index) => (

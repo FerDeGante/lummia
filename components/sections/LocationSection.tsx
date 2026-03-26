@@ -26,7 +26,7 @@ export function LocationSection() {
               </ActivatedAccent>
             </h2>
             <p className="mt-5 text-[1rem] leading-7 tracking-[-0.02em] text-[var(--muted)] sm:text-[1.05rem]">
-              Dirección clara, horario visible y un acceso directo para resolver dudas sin fricción.
+              Nos encontramos a lado de Correos de México, junto a Palacio de Gobierno.
             </p>
 
             <div className="mt-10 space-y-4">

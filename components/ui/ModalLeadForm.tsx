@@ -178,11 +178,8 @@ function ModalLeadFormContent({
                 ))}
 
                 <div className="flex flex-col gap-3 pt-2 sm:col-span-2 sm:flex-row sm:items-center sm:justify-between">
-                  <p className="max-w-md text-xs leading-5 text-[var(--muted)]">
-                    Estado local listo para conectarse después con backend, CRM o automatización.
-                  </p>
                   <Button type="submit" icon>
-                    Enviar
+                    {config.submit}
                   </Button>
                 </div>
               </form>

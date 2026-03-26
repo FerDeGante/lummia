@@ -35,17 +35,17 @@ export const VALUE_CARDS = [
   {
     key: "sparkles",
     title: "Para emprendedores",
-    text: "Un espacio para proyectar tu marca, vender con presencia física y crecer junto a otras propuestas locales.",
+    text: "Proyecta tu marca con presencia real, crece junto a otras propuestas locales y capta clientes desde el día uno.",
   },
   {
     key: "compass",
     title: "Para clientes",
-    text: "Un lugar claro para descubrir marcas, novedades y eventos sin tener que buscar entre mil mensajes.",
+    text: "Descubre marcas, novedades y eventos en un solo lugar, sin buscar entre mil mensajes de Instagram.",
   },
   {
     key: "users",
     title: "Para la comunidad",
-    text: "Un punto de encuentro que impulsa consumo local y fortalece el movimiento creativo de Cuernavaca.",
+    text: "Un punto de encuentro que convierte visitas en relación, consumo local en movimiento y atención en comunidad.",
   },
 ];
 
