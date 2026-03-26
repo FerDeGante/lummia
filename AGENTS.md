@@ -1,5 +1,5 @@
-<!-- BEGIN:nextjs-agent-rules -->
-# This is NOT the Next.js you know
+# AGENTS
 
-This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` before writing any code. Heed deprecation notices.
-<!-- END:nextjs-agent-rules -->
+- Dirección de arte: premium editorial, blanco cálido, glass claro y profundidad sutil.
+- Motion: Framer Motion para reveals y microinteracciones, GSAP para narrativa sticky, Lenis para smooth scroll.
+- Assets a reemplazar cuando existan: `public/lummia-logo.svg` y la URL de WhatsApp en `lib/constants.ts`.
