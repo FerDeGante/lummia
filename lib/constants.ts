@@ -49,139 +49,137 @@ export const VALUE_CARDS = [
   },
 ];
 
-const BRAND_LOREM =
-  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
-
 export const FEATURED_BRANDS = [
   {
     name: "Imagination Box",
+    tag: "Marca fundadora",
     image:
       "https://res.cloudinary.com/ddax9tdki/image/upload/v1774491387/imagination_box_mcnuyt.jpg",
-    text: BRAND_LOREM,
+    text: "Una marca que combina creatividad, diseño y experiencia sensorial para quienes buscan algo único y con propósito.",
   },
   {
     name: "Niebla Style Jewelry",
     image:
       "https://res.cloudinary.com/ddax9tdki/image/upload/v1774491388/niebla_style_jewelry_v5ioym.jpg",
-    text: BRAND_LOREM,
+    text: "Joyería con personalidad que habla por sí sola. Piezas pensadas para destacar sin esfuerzo.",
   },
   {
     name: "Imperio by Mark",
     image:
       "https://res.cloudinary.com/ddax9tdki/image/upload/v1774491388/imperio_by_mark_xlfz6c.png",
-    text: BRAND_LOREM,
+    text: "Estilo urbano con identidad propia. Moda que proyecta actitud y presencia visual clara.",
   },
   {
     name: "Miel Abitita",
     image:
       "https://res.cloudinary.com/ddax9tdki/image/upload/v1774491395/miel_abitita_evnqu2.png",
-    text: BRAND_LOREM,
+    text: "Miel artesanal con origen real y sabor auténtico. Un producto honesto, bien presentado y fácil de recomendar.",
   },
   {
     name: "Sumando Patitas",
     image:
       "https://res.cloudinary.com/ddax9tdki/image/upload/v1774491393/sumando_patitas_onbtla.png",
-    text: BRAND_LOREM,
+    text: "Productos para mascotas con corazón. Cada compra suma a una causa que conecta con la comunidad.",
   },
   {
     name: "Rome Studio",
     image:
       "https://res.cloudinary.com/ddax9tdki/image/upload/v1774491393/rome_studio_uuuy3e.png",
-    text: BRAND_LOREM,
+    text: "Diseño y arte visual con una estética cuidada. Piezas que funcionan como regalo o como declaración personal.",
   },
   {
     name: "Joseff Shop",
     image:
       "https://res.cloudinary.com/ddax9tdki/image/upload/v1774491392/joseff_shop_lwdw9d.png",
-    text: BRAND_LOREM,
+    text: "Accesorios y estilo con curación urbana. Una propuesta fresca que conecta con lo contemporáneo.",
   },
   {
     name: "Suika Shoppu",
     image:
       "https://res.cloudinary.com/ddax9tdki/image/upload/v1774491392/suika_shoppu_zfwpas.png",
-    text: BRAND_LOREM,
+    text: "Cultura asiática y diseño pop en cada producto. Una propuesta visual única para quien busca algo distinto.",
   },
   {
     name: "Venus Joyería",
     image:
       "https://res.cloudinary.com/ddax9tdki/image/upload/v1774491392/venus_joyeria_mdzid0.png",
-    text: BRAND_LOREM,
+    text: "Joyería delicada con acabados finos. Piezas pensadas para elevar cualquier look con elegancia accesible.",
   },
   {
     name: "V D Dreams",
     image:
       "https://res.cloudinary.com/ddax9tdki/image/upload/v1774491392/v_d_dreams_grjjgm.png",
-    text: BRAND_LOREM,
+    text: "Moda y accesorios con una visión clara de estilo. Productos que inspiran y acompañan el día a día.",
   },
   {
     name: "Wardrobe Days",
     image:
       "https://res.cloudinary.com/ddax9tdki/image/upload/v1774491392/wardrobe_days_vdgvcg.png",
-    text: BRAND_LOREM,
+    text: "Prendas seleccionadas con buen ojo y buen gusto. Moda accesible que no sacrifica identidad.",
   },
   {
     name: "Choego",
     image: "https://res.cloudinary.com/ddax9tdki/image/upload/v1774491391/choego_elq7vr.png",
-    text: BRAND_LOREM,
+    text: "Inspiración coreana con productos bien curados. Una propuesta para quienes valoran la estética y el detalle.",
   },
   {
     name: "Potato Frikis",
     image:
       "https://res.cloudinary.com/ddax9tdki/image/upload/v1774491390/potato_frikis_erzifv.png",
-    text: BRAND_LOREM,
+    text: "Cultura friki con humor y diseño. Productos que conectan con comunidades apasionadas y leales.",
   },
   {
     name: "Leslie Boutique",
     image:
       "https://res.cloudinary.com/ddax9tdki/image/upload/v1774491390/leslie_boutique_lodyvl.png",
-    text: BRAND_LOREM,
+    text: "Moda femenina con presencia y personalidad. Prendas que proyectan confianza y estilo propio.",
   },
   {
     name: "Moca Ropa Deportiva",
     image:
       "https://res.cloudinary.com/ddax9tdki/image/upload/v1774491390/moca_ropa_deportiva_pkijax.jpg",
-    text: BRAND_LOREM,
+    text: "Ropa deportiva con diseño local y calidad real. Para quienes se mueven con intención y estilo.",
   },
   {
     name: "Daruma Bazar",
     image:
       "https://res.cloudinary.com/ddax9tdki/image/upload/v1774491390/daruma_bazar_j9puq0.png",
-    text: BRAND_LOREM,
+    text: "Productos importados con curaduría japonesa. Objetos que transforman lo cotidiano en algo especial.",
   },
   {
     name: "Craazy Socks",
     image:
       "https://res.cloudinary.com/ddax9tdki/image/upload/v1774491389/craazy_socks_kgiqti.png",
-    text: BRAND_LOREM,
+    text: "Calcetines con personalidad y color. El detalle que convierte un outfit en una declaración.",
   },
   {
     name: "Scrub Chic",
     image:
       "https://res.cloudinary.com/ddax9tdki/image/upload/v1774491389/scrub_chic_vvdsoh.jpg",
-    text: BRAND_LOREM,
+    text: "Uniformes médicos con diseño y estilo. Profesionalismo que no renuncia a verse bien.",
   },
   {
     name: "Mar Joyería",
     image:
       "https://res.cloudinary.com/ddax9tdki/image/upload/v1774491389/mar_joyeria_u5fyhh.png",
-    text: BRAND_LOREM,
+    text: "Joyería artesanal inspirada en la naturaleza. Piezas que combinan delicadeza con presencia visual.",
   },
   {
     name: "Lua Luxe",
     image:
       "https://res.cloudinary.com/ddax9tdki/image/upload/v1774491388/lua_luxe_rjfiko.png",
-    text: BRAND_LOREM,
+    text: "Accesorios de lujo accesible con acabados premium. Para quienes buscan elevar su estilo sin exceso.",
   },
   {
     name: "Cxndy Shop",
     image:
       "https://res.cloudinary.com/ddax9tdki/image/upload/v1774491388/cxndy_shop_kekrmk.png",
-    text: BRAND_LOREM,
+    text: "Dulces y snacks con empaque llamativo y sabor irresistible. Una experiencia visual que también se disfruta.",
   },
   {
     name: "Images 1",
     image: "https://res.cloudinary.com/ddax9tdki/image/upload/v1774491388/images_1_yzzd5j.png",
-    text: BRAND_LOREM,
+    text: "Productos con imagen cuidada y propuesta clara. Una marca que entiende que la presentación importa.",
   },
 ];
 

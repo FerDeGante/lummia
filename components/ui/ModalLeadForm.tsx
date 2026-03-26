@@ -14,28 +14,28 @@ type ModalLeadFormProps = {
 
 const defaults = {
   space: {
-    title: "Solicitar espacio",
+    title: "Solicitar espacio en Lúmmia",
     intro:
-      "Comparte lo esencial y deja listo el primer contacto para evaluar tu marca dentro de Lúmmia.",
+      "Déjanos tus datos y te contactaremos con información sobre espacios, dinámica de participación y siguientes pasos.",
     fields: [
       { name: "name", label: "Nombre", type: "text" },
       { name: "brand", label: "Marca", type: "text" },
       { name: "email", label: "Correo", type: "email" },
       { name: "whatsapp", label: "WhatsApp", type: "tel" },
     ],
-    success:
-      "Tu solicitud quedó registrada. El siguiente paso es revisar encaje, espacio y oportunidad de lanzamiento.",
+    submit: "Enviar solicitud",
+    success: "Gracias. Recibimos tu solicitud y te contactaremos pronto.",
   },
   updates: {
-    title: "Recibir novedades",
+    title: "Recibir novedades de Lúmmia",
     intro:
-      "Un registro mínimo para avisarte de apertura, marcas nuevas y eventos con una comunicación clara.",
+      "Déjanos tus datos para enviarte noticias sobre nuevas marcas, eventos y promociones.",
     fields: [
       { name: "name", label: "Nombre", type: "text" },
       { name: "email", label: "Correo", type: "email" },
     ],
-    success:
-      "Listo. Quedas dentro de la lista de novedades para recibir aperturas, activaciones y noticias de Lúmmia.",
+    submit: "Quiero enterarme",
+    success: "Listo. Ya formas parte de la comunidad Lúmmia.",
   },
 } as const;
 
