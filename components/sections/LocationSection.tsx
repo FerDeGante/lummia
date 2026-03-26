@@ -91,7 +91,7 @@ export function LocationSection() {
               href={LOCATION.mapsUrl}
               target="_blank"
               rel="noreferrer"
-              className="relative block min-h-[26rem] overflow-hidden rounded-[2rem] border border-white/45"
+              className="relative block min-h-[22rem] overflow-hidden rounded-[2rem] border border-white/45 sm:min-h-[26rem]"
             >
               <iframe
                 src={LOCATION.mapsEmbed}

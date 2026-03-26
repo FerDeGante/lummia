@@ -76,7 +76,7 @@ export function BrandShowcase() {
                 </div>
 
                 <div className="mt-6 grid gap-8 lg:grid-cols-[1.08fr_0.92fr] lg:items-start">
-                  <div className="relative min-h-[23rem] overflow-hidden rounded-[2.2rem] bg-[linear-gradient(180deg,rgba(255,255,255,0.96),rgba(253,250,245,0.9))] p-4 sm:min-h-[30rem] sm:p-6">
+                  <div className="relative min-h-[21rem] overflow-hidden rounded-[2.2rem] bg-[linear-gradient(180deg,rgba(255,255,255,0.96),rgba(253,250,245,0.9))] p-4 sm:min-h-[30rem] sm:p-6">
                     <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(205,168,116,0.12),transparent_24%),radial-gradient(circle_at_80%_82%,rgba(128,143,104,0.08),transparent_20%)]" />
                     <div className="absolute inset-[8%] overflow-hidden rounded-[2rem] border border-white/88 bg-white shadow-[0_38px_74px_-42px_rgba(84,55,27,0.12),inset_0_1px_0_rgba(255,255,255,0.98)]">
                       <Image
@@ -92,7 +92,7 @@ export function BrandShowcase() {
                         {brand.name}
                       </span>
                     </GlassPanel>
-                    <GlassPanel className="absolute right-4 top-4 max-w-[13rem] rounded-[1.4rem] px-4 py-4 sm:right-6 sm:top-6">
+                    <GlassPanel className="absolute right-4 top-4 max-w-[10.5rem] rounded-[1.4rem] px-4 py-4 sm:right-6 sm:top-6 sm:max-w-[13rem]">
                       <p className="text-[0.72rem] font-semibold uppercase tracking-[0.22em] text-[var(--muted)]">
                         Lúmmia
                       </p>
@@ -100,7 +100,7 @@ export function BrandShowcase() {
                         Selección real de marcas para mostrar identidad y presencia visual.
                       </p>
                     </GlassPanel>
-                    <div className="absolute bottom-6 left-6 right-6 flex items-end justify-between gap-4">
+                    <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between gap-4 sm:bottom-6 sm:left-6 sm:right-6">
                       <div>
                         <p className="text-[0.74rem] font-semibold uppercase tracking-[0.22em] text-[rgba(46,35,26,0.46)]">
                           Marca local
@@ -152,8 +152,8 @@ export function BrandShowcase() {
             </AnimatePresence>
           </div>
 
-          <div className="mt-7 flex items-center justify-center gap-4">
-            <div className="flex items-center gap-3 rounded-full bg-[rgba(244,242,238,0.52)] px-5 py-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.94)] ring-1 ring-[rgba(177,145,104,0.08)]">
+          <div className="mt-7 flex flex-col items-stretch gap-4 sm:flex-row sm:items-center sm:justify-center">
+            <div className="flex max-w-full items-center gap-3 overflow-x-auto rounded-full bg-[rgba(244,242,238,0.52)] px-5 py-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.94)] ring-1 ring-[rgba(177,145,104,0.08)] no-scrollbar">
               {FEATURED_BRANDS.map((brand, index) => {
                 const isActive = index === activeIndex;
 
@@ -177,7 +177,7 @@ export function BrandShowcase() {
             <button
               type="button"
               aria-label={isPlaying ? "Pausar carrusel" : "Reproducir carrusel"}
-              className="flex h-16 w-16 items-center justify-center rounded-full bg-[rgba(244,242,238,0.52)] text-[var(--ink)] shadow-[inset_0_1px_0_rgba(255,255,255,0.94)] ring-1 ring-[rgba(177,145,104,0.08)] transition hover:bg-white"
+              className="flex h-14 w-full items-center justify-center rounded-full bg-[rgba(244,242,238,0.52)] text-[var(--ink)] shadow-[inset_0_1px_0_rgba(255,255,255,0.94)] ring-1 ring-[rgba(177,145,104,0.08)] transition hover:bg-white sm:h-16 sm:w-16"
               onClick={() => setIsPaused((current) => !current)}
             >
               {isPlaying ? <Pause className="h-6 w-6" /> : <Play className="ml-0.5 h-6 w-6" />}

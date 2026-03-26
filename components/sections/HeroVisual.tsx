@@ -37,7 +37,7 @@ export function HeroVisual() {
     <div
       ref={ref}
       className="relative mx-auto aspect-[0.96] w-full max-w-[42rem]"
-      onMouseMove={(event) => {
+      onPointerMove={(event) => {
         if (prefersReducedMotion) {
           return;
         }
@@ -49,7 +49,7 @@ export function HeroVisual() {
         pointerX.set(x);
         pointerY.set(y);
       }}
-      onMouseLeave={() => {
+      onPointerLeave={() => {
         pointerX.set(0);
         pointerY.set(0);
       }}
@@ -83,7 +83,7 @@ export function HeroVisual() {
 
         <GlassPanel
           tone="strong"
-          className="absolute right-[8%] top-[50%] max-w-[15rem] rounded-[1.6rem] p-4 sm:p-5"
+          className="absolute right-[8%] top-[50%] max-w-[15rem] rounded-[1.6rem] p-4 max-[480px]:right-[4%] max-[480px]:top-[54%] max-[480px]:max-w-[11.5rem] sm:p-5"
         >
           <p className="text-[0.7rem] font-semibold uppercase tracking-[0.28em] text-[var(--muted)]">
             Unveiling local

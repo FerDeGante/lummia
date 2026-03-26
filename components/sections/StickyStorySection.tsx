@@ -1,7 +1,7 @@
 "use client";
 
 import { useLayoutEffect, useRef } from "react";
-import { motion, useReducedMotion } from "framer-motion";
+import { useReducedMotion } from "framer-motion";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ActivatedAccent } from "@/components/motion/ActivatedAccent";
@@ -13,66 +13,102 @@ gsap.registerPlugin(ScrollTrigger);
 
 export function StickyStorySection() {
   const prefersReducedMotion = useReducedMotion();
-  const desktopRef = useRef<HTMLDivElement>(null);
+  const storyRef = useRef<HTMLDivElement>(null);
   const pinRef = useRef<HTMLDivElement>(null);
   const copiesRef = useRef<Array<HTMLDivElement | null>>([]);
   const visualsRef = useRef<Array<HTMLDivElement | null>>([]);
 
   useLayoutEffect(() => {
-    if (prefersReducedMotion || !desktopRef.current || !pinRef.current) {
+    if (prefersReducedMotion || !storyRef.current || !pinRef.current) {
       return;
     }
 
-    const mm = gsap.matchMedia();
+    const ctx = gsap.context(() => {
+      const copies = copiesRef.current.filter(
+        (node): node is HTMLDivElement => Boolean(node),
+      );
+      const visuals = visualsRef.current.filter(
+        (node): node is HTMLDivElement => Boolean(node),
+      );
 
-    mm.add("(min-width: 768px)", () => {
-      const ctx = gsap.context(() => {
-        const copies = copiesRef.current.filter(Boolean);
-        const visuals = visualsRef.current.filter(Boolean);
+      if (!copies.length || !visuals.length) {
+        return;
+      }
 
-        gsap.set([...copies, ...visuals], { autoAlpha: 0, y: 28, scale: 0.98 });
-        gsap.set([copies[0], visuals[0]], { autoAlpha: 1, y: 0, scale: 1 });
+      const getScrollMetrics = () => {
+        const viewportHeight = window.innerHeight;
+        const width = window.innerWidth;
+        const isLandscape = width > viewportHeight;
 
-        const timeline = gsap.timeline({
-          scrollTrigger: {
-            trigger: desktopRef.current,
-            start: "top top+=24",
-            end: "+=1520",
-            scrub: 0.42,
-            pin: pinRef.current,
-            anticipatePin: 1,
+        if (width >= 1024) {
+          return {
+            startOffset: isLandscape ? 18 : 28,
+            length: Math.max(viewportHeight * (isLandscape ? 1.25 : 1.5), isLandscape ? 1200 : 1440),
+          };
+        }
+
+        if (width >= 768) {
+          return {
+            startOffset: isLandscape ? 12 : 20,
+            length: Math.max(viewportHeight * (isLandscape ? 1.45 : 1.85), isLandscape ? 980 : 1600),
+          };
+        }
+
+        return {
+          startOffset: isLandscape ? 10 : 16,
+          length: Math.max(viewportHeight * (isLandscape ? 1.6 : 2.05), isLandscape ? 900 : 1680),
+        };
+      };
+
+      gsap.set([...copies, ...visuals], { autoAlpha: 0, y: 28, scale: 0.98 });
+      gsap.set([copies[0], visuals[0]], { autoAlpha: 1, y: 0, scale: 1 });
+
+      const timeline = gsap.timeline({
+        scrollTrigger: {
+          trigger: storyRef.current,
+          start: () => {
+            const { startOffset } = getScrollMetrics();
+
+            return `top top+=${startOffset}`;
           },
-        });
+          end: () => {
+            const { length } = getScrollMetrics();
 
-        visuals.forEach((_, index) => {
-          if (index === 0) {
-            return;
-          }
+            return `+=${length}`;
+          },
+          scrub: 0.42,
+          pin: pinRef.current,
+          anticipatePin: 1,
+          invalidateOnRefresh: true,
+        },
+      });
 
-          timeline
-            .to([copies[index - 1], visuals[index - 1]], {
-              autoAlpha: 0,
-              y: -18,
-              scale: 0.985,
-              duration: 0.36,
-            })
-            .to(
-              [copies[index], visuals[index]],
-              {
-                autoAlpha: 1,
-                y: 0,
-                scale: 1,
-                duration: 0.42,
-              },
-              "<0.02",
-            );
-        });
-      }, desktopRef);
+      visuals.forEach((_, index) => {
+        if (index === 0) {
+          return;
+        }
 
-      return () => ctx.revert();
-    });
+        timeline
+          .to([copies[index - 1], visuals[index - 1]], {
+            autoAlpha: 0,
+            y: -18,
+            scale: 0.985,
+            duration: 0.36,
+          })
+          .to(
+            [copies[index], visuals[index]],
+            {
+              autoAlpha: 1,
+              y: 0,
+              scale: 1,
+              duration: 0.42,
+            },
+            "<0.02",
+          );
+      });
+    }, storyRef);
 
-    return () => mm.revert();
+    return () => ctx.revert();
   }, [prefersReducedMotion]);
 
   return (
@@ -90,9 +126,9 @@ export function StickyStorySection() {
         />
       </div>
 
-      <div ref={desktopRef} className="relative mx-auto mt-14 hidden max-w-7xl md:block">
-        <div ref={pinRef} className="grid min-h-screen grid-cols-[0.9fr_1.1fr] items-center gap-12">
-          <div className="relative min-h-[25rem]">
+      <div ref={storyRef} className="relative mx-auto mt-14 max-w-7xl">
+        <div ref={pinRef} className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:gap-12">
+          <div className="relative min-h-[22rem] sm:min-h-[24rem] lg:min-h-[25rem]">
             {STORY_STEPS.map((step, index) => (
               <div
                 key={step}
@@ -104,7 +140,7 @@ export function StickyStorySection() {
                 <p className="text-[0.72rem] font-semibold uppercase tracking-[0.3em] text-[var(--muted)]">
                   {`Paso 0${index + 1}`}
                 </p>
-                <h3 className="mt-5 max-w-xl text-balance text-[clamp(3rem,5vw,5rem)] font-semibold leading-[0.95] tracking-[-0.06em] text-[var(--ink)]">
+                <h3 className="mt-5 max-w-xl text-balance text-[clamp(2rem,6vw,5rem)] font-semibold leading-[0.95] tracking-[-0.06em] text-[var(--ink)]">
                   {index === 1 ? (
                     <>
                       Es visibilidad para marcas con{" "}
@@ -130,7 +166,7 @@ export function StickyStorySection() {
             ))}
           </div>
 
-          <div className="relative h-[38rem]">
+          <div className="relative min-h-[25rem] sm:min-h-[31rem] lg:h-[38rem]">
             {STORY_STEPS.map((step, index) => (
               <div
                 key={step}
@@ -139,14 +175,14 @@ export function StickyStorySection() {
                 }}
                 className="absolute inset-0"
               >
-                <div className="absolute inset-0 rounded-[2.6rem] bg-[radial-gradient(circle_at_50%_12%,rgba(250,237,218,0.76),transparent_36%),radial-gradient(circle_at_16%_84%,rgba(130,144,106,0.12),transparent_28%),linear-gradient(180deg,rgba(255,255,255,0.78),rgba(255,249,241,0.45))]" />
+                <div className="absolute inset-0 rounded-[2.1rem] bg-[radial-gradient(circle_at_50%_12%,rgba(250,237,218,0.76),transparent_36%),radial-gradient(circle_at_16%_84%,rgba(130,144,106,0.12),transparent_28%),linear-gradient(180deg,rgba(255,255,255,0.78),rgba(255,249,241,0.45))] sm:rounded-[2.6rem]" />
                 <GlassPanel
                   tone="strong"
-                  className="absolute left-[8%] top-[10%] h-[68%] w-[52%] rounded-[2.2rem] p-8"
+                  className="absolute left-[6%] top-[12%] h-[64%] w-[58%] rounded-[1.9rem] p-5 sm:left-[8%] sm:top-[10%] sm:h-[68%] sm:w-[52%] sm:rounded-[2.2rem] sm:p-8"
                 >
-                  <div className="h-full rounded-[1.8rem] bg-[linear-gradient(160deg,rgba(255,255,255,0.95),rgba(245,233,215,0.5))] shadow-[inset_0_1px_0_rgba(255,255,255,0.9)]">
+                  <div className="h-full rounded-[1.4rem] bg-[linear-gradient(160deg,rgba(255,255,255,0.95),rgba(245,233,215,0.5))] shadow-[inset_0_1px_0_rgba(255,255,255,0.9)] sm:rounded-[1.8rem]">
                     <div
-                      className="h-full rounded-[1.8rem]"
+                      className="h-full rounded-[1.4rem] sm:rounded-[1.8rem]"
                       style={{
                         background:
                           index === 0
@@ -158,11 +194,11 @@ export function StickyStorySection() {
                     />
                   </div>
                 </GlassPanel>
-                <GlassPanel className="absolute right-[10%] top-[18%] w-[38%] rounded-[1.8rem] p-5">
+                <GlassPanel className="absolute right-[6%] top-[16%] w-[44%] max-w-[11.5rem] rounded-[1.4rem] p-4 sm:right-[10%] sm:top-[18%] sm:w-[38%] sm:max-w-[13rem] sm:rounded-[1.8rem] sm:p-5">
                   <p className="text-[0.7rem] font-semibold uppercase tracking-[0.24em] text-[var(--muted)]">
                     {index === 0 ? "Espacio editorial" : index === 1 ? "Presencia de marca" : "Descubrimiento"}
                   </p>
-                  <p className="mt-3 text-[1.02rem] font-semibold leading-6 tracking-[-0.04em] text-[var(--ink)]">
+                  <p className="mt-3 text-[0.9rem] font-semibold leading-6 tracking-[-0.04em] text-[var(--ink)] sm:text-[1.02rem]">
                     {index === 0
                       ? "Una visita con intención empieza por un entorno que no se siente improvisado."
                       : index === 1
@@ -170,31 +206,11 @@ export function StickyStorySection() {
                         : "El recorrido invita a quedarse, explorar y volver."}
                   </p>
                 </GlassPanel>
-                <div className="absolute bottom-[10%] right-[14%] h-36 w-36 rounded-full bg-[radial-gradient(circle,rgba(205,168,116,0.28),transparent_66%)] blur-2xl" />
+                <div className="absolute bottom-[10%] right-[14%] h-24 w-24 rounded-full bg-[radial-gradient(circle,rgba(205,168,116,0.28),transparent_66%)] blur-2xl sm:h-36 sm:w-36" />
               </div>
             ))}
           </div>
         </div>
-      </div>
-
-      <div className="mx-auto mt-10 grid max-w-7xl gap-5 md:hidden">
-        {STORY_STEPS.map((step, index) => (
-          <motion.div
-            key={step}
-            initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0, y: 22 }}
-            whileInView={prefersReducedMotion ? { opacity: 1 } : { opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: prefersReducedMotion ? 0 : 0.7, delay: prefersReducedMotion ? 0 : index * 0.06 }}
-          >
-            <GlassPanel className="rounded-[2rem] p-6">
-              <p className="text-[0.72rem] font-semibold uppercase tracking-[0.28em] text-[var(--muted)]">
-                {`Paso 0${index + 1}`}
-              </p>
-              <h3 className="mt-4 text-3xl font-semibold tracking-[-0.06em] text-[var(--ink)]">{step}</h3>
-              <p className="mt-4 text-sm leading-6 text-[var(--muted)]">{STORY_SUPPORT}</p>
-            </GlassPanel>
-          </motion.div>
-        ))}
       </div>
     </section>
   );
